@@ -1,0 +1,108 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    background:
+      radial-gradient(circle at top, #1b1f3b, #050505 60%),
+      linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+    overflow: hidden;
+}
+
+
+.banner{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    perspective: 1500px;
+    overflow: hidden;
+    transform-style: preserve-3d;
+}
+
+.banner .slider{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 220px;
+    height: 280px;
+    transform-style: preserve-3d;
+    transform: translate(-50%, -50%) rotateX(-15deg);
+    animation: autoRun 20s linear infinite;
+}
+
+@keyframes autoRun{
+    from{
+        transform: translate(-50%, -50%) rotateX(-15deg) rotateY(0deg);
+    }
+    to{
+        transform: translate(-50%, -50%) rotateX(-15deg) rotateY(360deg);
+    }
+}
+
+.banner .slider .item{
+    position: absolute;
+    inset: 0;
+    transform:
+      rotateY(
+        calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
+      )
+      translateZ(320px);
+}
+
+.banner .slider .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+}
+
+
+.content{
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #fff;
+    z-index: 10;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.6);
+}
+
+/* Title */
+.content h1{
+    font-size: 42px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.content .author{
+    background: rgba(0, 0, 0, 0.45);
+    padding: 18px 30px;
+    border-radius: 15px;
+    display: inline-block;
+    backdrop-filter: blur(8px);
+}
+
+.content .author h2{
+    font-size: 22px;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.content .author p{
+    font-size: 14px;
+    opacity: 0.85;
+    margin: 3px 0;
+}
+
+.content .author p b{
+    color: #00ffd5;
+    letter-spacing: 1px;
+}
+
